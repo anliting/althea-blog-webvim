@@ -2,7 +2,7 @@ Promise.all([
     module.scriptByPath('https://cdn.rawgit.com/anliting/vimontheweb/42158900a84a07fe6a850a4b5096131f99e9e5f4/Vim.js'),
     module.scriptByPath('https://cdn.rawgit.com/sytelus/CryptoJS/7fbfbbee0d005b31746bc5858c70c359e98308e5/rollups/aes.js'),
 ]).then(()=>{
-    blog.addEventListener('pageLoad',page=>{
+    blog.on('pageLoad',page=>{
         page.textarea_comment__form_comment.addEventListener(
             'focus',
             ()=>{

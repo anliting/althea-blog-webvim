@@ -1,4 +1,4 @@
-module.importByPath('https://cdn.rawgit.com/anliting/webvim/62227d52be2d6d9d345143963db6a2a7b3dd86a7/src/Vim.js',{mode:1}).then(Vim=>{
+module.importByPath('https://cdn.rawgit.com/anliting/webvim/de035a0c9589a929d229e28efb3fb122ab0adec6/src/Vim.js',{mode:1}).then(Vim=>{
     return setUpVim
     function setUpVim(textarea){
         let

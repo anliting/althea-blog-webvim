@@ -1,5 +1,5 @@
 module.importByPath(`https://cdn.rawgit.com/anliting/webvim/${
-    'd3c91b75742f4020755ad1270ea0aaa9bd7ee645'
+    'c52e5a4ca3a892c1097097c0e9dbde629d4b2388'
 }/src/Vim.js`,{mode:1}).then(Vim=>{
     return setUpVim
     function setUpVim(textarea){
@@ -29,9 +29,9 @@ module.importByPath(`https://cdn.rawgit.com/anliting/webvim/${
 function createViewDiv(vim){
     let div=document.createElement('div')
     div.style.position='fixed'
-    div.style.top='50%'
     div.style.left='50%'
-    div.style.webkitTransform='translateY(-50%) translateX(-50%)'
+    div.style.top='50%'
+    div.style.transform='translate(-50%,-50%)'
     div.style.width='min-content'
     div.style.border='1px solid lightgray'
     div.style.backgroundColor='white'
@@ -40,6 +40,6 @@ function createViewDiv(vim){
     })
     vim.width=80
     vim.height=24
-    div.appendChild(vim.div)
+    div.appendChild(vim.node)
     return div
 }

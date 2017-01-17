@@ -1,5 +1,5 @@
 module.importByPath(`https://cdn.rawgit.com/anliting/webvim/${
-    '894037bb993239b666836e5c21d9d2db0b33f008'
+    'c56070705c0ed96dcf5bcb2838fc52f7a91b0b83'
 }/src/Vim.js`,{mode:1}).then(Vim=>{
     return setUpVim
     function setUpVim(textarea){
@@ -12,16 +12,18 @@ module.importByPath(`https://cdn.rawgit.com/anliting/webvim/${
             e.preventDefault()
             e.stopPropagation()
             vim.text=textarea.value
-            document.head.appendChild(Vim.style)
+            vim._cursor.moveTo(textarea.selectionStart)
+            document.head.appendChild(vim.style)
             document.body.appendChild(viewDiv)
             vim.focus()
         })
         vim.on('quit',e=>{
-            document.head.removeChild(Vim.style)
+            document.head.removeChild(vim.style)
             document.body.removeChild(viewDiv)
             textarea.focus()
         })
         vim.on('write',e=>{
+            textarea.selectionStart=textarea.selectionEnd=vim._cursor.abs
             textarea.value=vim.text
         })
     }

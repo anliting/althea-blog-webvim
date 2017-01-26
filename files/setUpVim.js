@@ -23,8 +23,8 @@ module.importByPath(`https://cdn.rawgit.com/anliting/webvim/${
             textarea.focus()
         })
         vim.on('write',e=>{
-            textarea.selectionStart=textarea.selectionEnd=vim._cursor.abs
             textarea.value=vim.text
+            textarea.selectionStart=textarea.selectionEnd=vim._cursor.abs
         })
     }
 })

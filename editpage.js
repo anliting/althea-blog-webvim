@@ -5,7 +5,7 @@ else
 function main(editpage){
     if(editpage.isMobile)
         return
-    module.importByPath('plugins/althea-vimontheweb/setUpVim.js',{mode:1}).then(setUpVim=>{
+    module.importByPath('plugins/althea-webvim/setUpVim.js',{mode:1}).then(setUpVim=>{
         setUpVim(editpage.textarea_content)
     })
 }

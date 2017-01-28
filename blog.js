@@ -1,5 +1,5 @@
 let setUpVim=
-    module.importByPath('plugins/althea-vimontheweb/setUpVim.js',{mode:1})
+    module.importByPath('plugins/althea-webvim/setUpVim.js',{mode:1})
 this.on('pageLoad',page=>{
     page.textarea_comment__form_comment.addEventListener('focus',()=>{
         page.textarea_comment__form_comment.placeholder=

@@ -1,10 +1,13 @@
 module.importByPath(`https://cdn.rawgit.com/anliting/webvim/${
-    '601147090dd0c85347d5f3e252114d1106f3ec66'
+    'ea77e1bf50da6a65713466e78f69494f81d38d09'
 }/src/Vim.js`,{mode:1}).then(Vim=>{
     return setUpVim
     function setUpVim(textarea){
         let
-            vim=new Vim,
+            vim=new Vim(p=>{
+                if(p=='~/.vimrc')
+                    return localStorage.webvimVimrc
+            }),
             viewDiv=createViewDiv(vim)
         textarea.addEventListener('keydown',e=>{
             if(!(e.ctrlKey&&e.shiftKey&&e.key=='V'))
@@ -22,9 +25,12 @@ module.importByPath(`https://cdn.rawgit.com/anliting/webvim/${
             document.body.removeChild(viewDiv)
             textarea.focus()
         })
-        vim.on('write',e=>{
-            textarea.value=vim.text
-            textarea.selectionStart=textarea.selectionEnd=vim._cursor.abs
+        vim.on('write',p=>{
+            if(p==undefined){
+                textarea.value=vim.text
+                textarea.selectionStart=textarea.selectionEnd=vim._cursor.abs
+            }else if(p=='~/.vimrc')
+                localStorage.webvimVimrc=vim.text
         })
     }
 })

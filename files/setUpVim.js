@@ -1,5 +1,5 @@
 module.importByPath(`https://cdn.rawgit.com/anliting/webvim/${
-    '4621eed3fd0ed5d29690dd2b7c13921976328b90'
+    '601147090dd0c85347d5f3e252114d1106f3ec66'
 }/src/Vim.js`,{mode:1}).then(Vim=>{
     return setUpVim
     function setUpVim(textarea){
@@ -35,8 +35,7 @@ function createViewDiv(vim){
     div.style.top='50%'
     div.style.transform='translate(-50%,-50%)'
     div.style.width='min-content'
-    div.style.border='1px solid lightgray'
-    div.style.backgroundColor='white'
+    div.style.zIndex='3'
     div.addEventListener('click',()=>{
         vim.focus()
     })

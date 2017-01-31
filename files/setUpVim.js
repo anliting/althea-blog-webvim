@@ -1,14 +1,12 @@
 module.importByPath(`https://cdn.rawgit.com/anliting/webvim/${
-    '34304d9dc66a7b984c7234974a3cf4b2d1d65ef1'
+    'a8fd2acf687f15ce076006fe905ec379a6219652'
 }/src/Vim.js`,{mode:1}).then(Vim=>{
     return setUpVim
     function setUpVim(textarea){
-        let
-            vim=new Vim(p=>{
-                if(p=='~/.vimrc')
-                    return localStorage.webvimVimrc
-            }),
-            viewDiv=createViewDiv(vim)
+        let vim=new Vim(p=>{
+            if(p=='~/.vimrc')
+                return localStorage.webvimVimrc
+        }),viewDiv=createViewDiv(vim)
         textarea.addEventListener('keydown',e=>{
             if(!(e.ctrlKey&&e.shiftKey&&e.key=='V'))
                 return
@@ -25,13 +23,14 @@ module.importByPath(`https://cdn.rawgit.com/anliting/webvim/${
             document.body.removeChild(viewDiv)
             textarea.focus()
         })
-        vim.on('write',p=>{
+        vim.write=p=>{
             if(p==undefined){
                 textarea.value=vim.text
-                textarea.selectionStart=textarea.selectionEnd=vim._cursor.abs
+                textarea.selectionStart=textarea.selectionEnd=
+                    vim.cursor
             }else if(p=='~/.vimrc')
                 localStorage.webvimVimrc=vim.text
-        })
+        }
     }
 })
 function createViewDiv(vim){

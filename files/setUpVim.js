@@ -1,38 +1,42 @@
-module.importByPath(`https://cdn.rawgit.com/anliting/webvim/${
+var Vim=()=>module.importByPath(`https://cdn.rawgit.com/anliting/webvim/${
     'a8fd2acf687f15ce076006fe905ec379a6219652'
-}/src/Vim.js`,{mode:1}).then(Vim=>{
-    return setUpVim
-    function setUpVim(textarea){
-        let vim=new Vim(p=>{
-            if(p=='~/.vimrc')
-                return localStorage.webvimVimrc
-        }),viewDiv=createViewDiv(vim)
-        textarea.addEventListener('keydown',e=>{
-            if(!(e.ctrlKey&&e.shiftKey&&e.key=='V'))
-                return
-            e.preventDefault()
-            e.stopPropagation()
+}/src/Vim.js`,{mode:1})
+function setUpVim(textarea){
+    textarea.addEventListener('keydown',e=>{
+        if(!(e.ctrlKey&&e.shiftKey&&e.key=='V'))
+            return
+        e.preventDefault()
+        e.stopPropagation()
+        if(typeof Vim=='function')
+            Vim=Vim()
+        textarea.disabled=true
+        Vim.then(Vim=>{
+            let vim=new Vim(p=>{
+                if(p=='~/.vimrc')
+                    return localStorage.webvimVimrc
+            }),viewDiv=createViewDiv(vim)
             vim.text=textarea.value
             vim._cursor.moveTo(textarea.selectionStart)
             document.head.appendChild(vim.style)
             document.body.appendChild(viewDiv)
             vim.focus()
+            vim.on('quit',e=>{
+                document.head.removeChild(vim.style)
+                document.body.removeChild(viewDiv)
+                textarea.disabled=false
+                textarea.focus()
+            })
+            vim.write=p=>{
+                if(p==undefined){
+                    textarea.value=vim.text
+                    textarea.selectionStart=textarea.selectionEnd=
+                        vim.cursor
+                }else if(p=='~/.vimrc')
+                    localStorage.webvimVimrc=vim.text
+            }
         })
-        vim.on('quit',e=>{
-            document.head.removeChild(vim.style)
-            document.body.removeChild(viewDiv)
-            textarea.focus()
-        })
-        vim.write=p=>{
-            if(p==undefined){
-                textarea.value=vim.text
-                textarea.selectionStart=textarea.selectionEnd=
-                    vim.cursor
-            }else if(p=='~/.vimrc')
-                localStorage.webvimVimrc=vim.text
-        }
-    }
-})
+    })
+}
 function createViewDiv(vim){
     let div=document.createElement('div')
     div.style.position='fixed'
@@ -49,3 +53,4 @@ function createViewDiv(vim){
     div.appendChild(vim.node)
     return div
 }
+setUpVim

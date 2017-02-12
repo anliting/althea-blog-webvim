@@ -1,5 +1,5 @@
 var Vim=()=>module.importByPath(`https://cdn.rawgit.com/anliting/webvim/${
-    '43b5f414f7113d1be158e23763c2bec9ae246a7a'
+    'd36b656e10bf63f1dee25d84218e8dd14d723ec4'
 }/src/Vim.js`,{mode:1})
 function setUpVim(textarea){
     textarea.addEventListener('keydown',e=>{

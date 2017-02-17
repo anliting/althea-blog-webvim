@@ -1,5 +1,5 @@
 var Vim=()=>module.importByPath(`https://cdn.rawgit.com/anliting/webvim/${
-    'feef52371acaaa1abc80b11472e7c689c6184d04'
+    'e637261bd45db7a67177f5a4881455a53e31fbcb'
 }/src/Vim.js`,{mode:1})
 function setUpVim(textarea){
     textarea.addEventListener('keydown',e=>{
@@ -19,6 +19,7 @@ function setUpVim(textarea){
             vim._cursor.moveTo(textarea.selectionStart)
             document.head.appendChild(vim.style)
             document.body.appendChild(viewDiv)
+            document.polluteCopy
             vim.focus()
             vim.on('quit',e=>{
                 document.head.removeChild(vim.style)

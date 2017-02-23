@@ -1,7 +1,7 @@
 var
     repoUrl='https://cdn.rawgit.com/anliting/webvim',
     loadVim=()=>module.importByPath(`${repoUrl}/${
-        '8a2daf69cd075e22d65c4f2d52615fbb1f9f4d32'
+        '650d70aa7109aba99bf681a4adc7ffb2c76ee503'
     }/src/Vim.js`,{mode:1})
 function setUpVim(textarea){
     textarea.addEventListener('keydown',e=>{

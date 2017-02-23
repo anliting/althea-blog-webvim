@@ -25,7 +25,7 @@ async function load(textarea,e){
     vim._cursor.moveTo(textarea.selectionStart)
     document.head.appendChild(vim.style)
     document.body.appendChild(viewDiv)
-    document.polluteCopy
+    vim.polluteCopy
     vim.focus()
     vim.on('quit',e=>{
         document.head.removeChild(vim.style)

@@ -2,7 +2,7 @@ let
     loadVim=()=>module.importByPath(`${
         'https://cdn.rawgit.com/anliting/webvim'
     }/${
-        '5a482fdfed1ea858f58c2510a86cf8c7d2a4105f'
+        '87d6c86cd09219272497c3e3da4e3eb1724e535d'
     }/src/Vim.static.js`,{mode:1})
 function setUpVim(textarea){
     textarea.addEventListener('keydown',e=>{

@@ -1,6 +1,6 @@
 let
     loadVim=()=>module.importByPath(`${
-        'https://cdn.rawgit.com/anliting/webvim'
+        'https://gitcdn.link/cdn/anliting/webvim'
     }/${
         'eccd5a6eb84a2eab2d04725b46b4e1952aa8d94a'
     }/src/Vim.static.js`,{mode:1})

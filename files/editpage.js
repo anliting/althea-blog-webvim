@@ -1,7 +1,7 @@
 import{moduleLoader}from'/lib/core.static.js'
 export default async editpage=>{
     let module=await moduleLoader()
-    let setUpVim=await module.importByPath('plugins/althea-webvim/setUpVim.js',{mode:1})
+    let setUpVim=await module.importByPath('plugins/webvim/setUpVim.js',{mode:1})
     if(editpage.setUp)
         main()
     else

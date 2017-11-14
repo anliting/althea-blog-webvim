@@ -1,6 +1,6 @@
-import{moduleLoader}from'/lib/core.static.js'
+import{load}from'/lib/core.static.js'
 export default async blog=>{
-    let module=await moduleLoader()
+    let module=await load.module()
     let setUpVim=
         module.importByPath('plugins/webvim/setUpVim.js',{mode:1})
     blog.on('pageLoad',async page=>{

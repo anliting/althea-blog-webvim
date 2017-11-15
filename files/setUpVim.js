@@ -1,9 +1,4 @@
-let
-    loadVim=()=>module.importByPath(`${
-        'https://gitcdn.link/cdn/anliting/webvim'
-    }/${
-        '585df5a6d6daa30dc78af958804f658c163dfe59'
-    }/src/Vim.static.js`,{mode:1})
+let loadVim=()=>module.moduleByPath('https://gitcdn.link/cdn/anliting/webvim/fb6dc531354001543833c50988a40097de92752c/src/Vim.static.js')
 function setUpVim(textarea){
     textarea.addEventListener('keydown',e=>{
         if(!(e.ctrlKey&&e.shiftKey&&e.key=='V'))

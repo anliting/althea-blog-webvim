@@ -1,7 +1,6 @@
 import{load}from'/lib/core.static.js'
+import setUpVim from './setUpVim.js'
 export default async editpage=>{
-    let module=await load.module()
-    let setUpVim=await module.importByPath('plugins/webvim/setUpVim.js',{mode:1})
     if(editpage.setUp)
         main()
     else

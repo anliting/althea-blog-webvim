@@ -2,7 +2,7 @@ import { load } from '/lib/core.static.js';
 
 let loadVim=async()=>{
     let module=await load.module();
-    return module.moduleByPath('https://gitcdn.link/cdn/anliting/webvim/91a954056b79fa6b931d419098dd72bd096131fc/src/Vim.static.js')
+    return module.moduleByPath('https://gitcdn.link/cdn/anliting/webvim/849313f416b610e64dde75f1f80cfb2114004990/src/Vim.static.js')
 };
 function setUpVim(textarea){
     textarea.addEventListener('keydown',e=>{

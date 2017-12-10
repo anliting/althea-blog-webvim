@@ -1,4 +1,3 @@
-import{load}from'/lib/core.static.js'
 import setUpVim from './setUpVim.js'
 export default async blog=>{
     blog.on('pageLoad',async page=>{

@@ -1,19 +1,18 @@
-import { load } from '/lib/core.static.js';
-
-let loadVim=async()=>{
-    let module=await load.module();
-    return module.moduleByPath('https://gitcdn.link/cdn/anliting/webvim/849313f416b610e64dde75f1f80cfb2114004990/src/Vim.static.js')
-};
+function evalImport(s){
+    return eval(`import(${JSON.stringify(s)})`)
+}
+let loadVim=async()=>
+    (await evalImport('https://gitcdn.link/cdn/anliting/webvim/849313f416b610e64dde75f1f80cfb2114004990/src/Vim.static.js')).default;
 function setUpVim(textarea){
     textarea.addEventListener('keydown',e=>{
         if(!(e.ctrlKey&&e.shiftKey&&e.key=='V'))
             return
         e.preventDefault();
         e.stopPropagation();
-        load$1(textarea,e);
+        load(textarea,e);
     });
 }
-async function load$1(textarea,e){
+async function load(textarea,e){
     if(typeof loadVim=='function')
         loadVim=loadVim();
     textarea.disabled=true;

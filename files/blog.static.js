@@ -66,6 +66,6 @@ var blog = async blog=>{
         );
         setUpVim(ct);
     });
-};
+}
 
 export default blog;

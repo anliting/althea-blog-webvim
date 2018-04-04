@@ -1,4 +1,4 @@
-module.exports=althea=>{
+export default althea=>{
     althea.setClientModules({
         blog:       'blog.static.js',
         editpage:   'editpage.static.js',

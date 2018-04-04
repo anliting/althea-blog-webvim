@@ -68,6 +68,6 @@ var editpage = async editpage=>{
             return
         setUpVim(editpage.textarea_content);
     }
-};
+}
 
 export default editpage;

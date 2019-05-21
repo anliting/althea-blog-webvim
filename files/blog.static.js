@@ -2,7 +2,7 @@ function evalImport(s){
     return eval(`import(${JSON.stringify(s)})`)
 }
 let loadVim=async()=>
-    (await evalImport('https://gitcdn.link/cdn/anliting/webvim/849313f416b610e64dde75f1f80cfb2114004990/src/Vim.static.js')).default;
+    (await evalImport('./setUpVim/Vim.js')).default;
 function setUpVim(textarea){
     textarea.addEventListener('keydown',e=>{
         if(!(e.ctrlKey&&e.shiftKey&&e.key=='V'))
@@ -62,10 +62,10 @@ var blog = async blog=>{
     blog.on('pageLoad',async page=>{
         let ct=page.textarea_comment__form_comment;
         ct.addEventListener('focus',()=>
-            ct.placeholder='Ctrl+Shift+V to enable Vim.'
+            ct.placeholder='Ctrl+Shift+V to enable Web Vim.'
         );
         setUpVim(ct);
     });
-}
+};
 
 export default blog;
